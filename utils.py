@@ -7,6 +7,7 @@ def _apply_patch_instructions(repodata, instructions):
     Apply the repodata patch instructions by merging the two dictionaries.
     Code is a simplified version from: https://github.com/conda/conda-index/blob/main/conda_index/index/__init__.py (included in LICENSE).
     For cloudsmith repodata patches, we only requires a small subset of the code.
+    Please do not modify this function.
     """
     _merge_or_update_dict(
         repodata.get("packages", {}),
@@ -23,6 +24,7 @@ def _merge_or_update_dict(
     Merges and updates the provided repodata with the patch instructions.
     Code is a simplified version from: https://github.com/conda/conda-index/blob/main/conda_index/utils.py (included in LICENSE).
     For cloudsmith repodata patches, we only requires a small subset of the code.
+    Please do not modify this function.
     """
     if base == new:
         return base
