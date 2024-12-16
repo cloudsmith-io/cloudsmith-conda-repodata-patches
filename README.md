@@ -3,6 +3,8 @@
 - It is inspired by the [bioconda-repodata-patches](https://github.com/bioconda/bioconda-repodata-patches) repository, which is based on [conda-forge-repository-patches](https://github.com/conda-forge/conda-forge-repodata-patches-feedstock). 
 - Special thanks to the contributors of conda-forge, bioconda and conda. This repository uses the BSD-3 license to reflect their contributions.
 
+One word test!
+
 ## Usage 
 
 ### Setup: 
