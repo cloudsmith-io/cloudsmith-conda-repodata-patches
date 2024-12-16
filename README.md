@@ -1,14 +1,14 @@
-# About cloudsmith-conda-repodata-patches
-- A repository containing two scripts to patch conda repodata for your cloudsmith repository. 
-- It is very similar to the [bioconda-repodata-patches](https://github.com/bioconda/bioconda-repodata-patches) repository (which itself is based on [conda-forge-repository-patches](https://github.com/conda-forge/conda-forge-repodata-patches-feedstock)). 
-- Thank you to conda-forge, bioconda and conda contributors. The license (BSD-3) reflects this.
+# About `cloudsmith-conda-repodata-patches`
+- This repository provides two scripts for patching Conda repodata in your Cloudsmith repository.
+- It is inspired by the [bioconda-repodata-patches](https://github.com/bioconda/bioconda-repodata-patches) repository, which is based on [conda-forge-repository-patches](https://github.com/conda-forge/conda-forge-repodata-patches-feedstock). 
+- Special thanks to the contributors of conda-forge, bioconda and conda. This repository uses the BSD-3 license to reflect their contributions.
 
 ## Usage 
 
 ### Setup: 
 - Fork this repository to your organization.
-- Intialise (or create) a python environment. To install the required dependencies use `pip install -r requirements.txt`.
-- Copy the `.env.example` template into a `.env` file and initialise the variables with the organization, repository and token/key you'd like to use. Note that the token you are using must be linked to a user/service account that has write access to the repository. Once complete (if running locally), run `source .env` in order for the variables to be used by child processes (i.e the python scripts). 
+- Initialize (or create) a python environment. To install the required dependencies use `pip install -r requirements.txt`.
+- Copy the `.env.example` template into a `.env` file and initialize the variables with the organization, repository and token/key you'd like to use. Ensure that the token is linked to a user/service account that has write access to the repository. Once complete (if running locally), run `source .env` in order for the variables to be used by child processes (e.g. the python scripts). 
 
 ### Adding a patch: 
 - In the `gen_patch_json.py` file add the subdirectories (the list of Conda architectures) that currently exist in your cloudsmith repository to the `SUBDIRS` variable. 
@@ -16,7 +16,7 @@
 - To test that the patch produces the changes you desire, run the `show_diff.py` script. This outputs the changes that the patch instructions will make to the `repodata.json` (index) per `subdir` for your repository. 
 
 ### Generating the patch instructions: 
-- Once you are content with the changes that the newly added patch will make, run the `gen_patch_json.py` script. Locally, this will generate a `patch_instructions.json` file per subdirectory in a `patches` directory. 
+- After verifying the changes, run the `gen_patch_json.py` script. This generates a `patch_instructions.json` file for each subdirectory in the `patches` directory.
 - The `patch_instructions.json` file will follow this exact format, with the package modifications stored within the `packages` key: 
     ```
     {
@@ -36,5 +36,5 @@
    2. To submit a patch, open a PR with your patch added to the `gen_patch_json.py` file. Create a CI/CD job which outputs the `diff` (from the `show_diff.py` script) whenever a PR is opened. 
    3. Create another CI/CD job which runs on merges to `main`. This should run the `gen_patch_json.py` script. 
    4. This job could also run the `submit_patch.py` script to update the patch instructions for the specified Cloudsmith repository and `subdir`. 
-- The `patch_instructions.json` does support removals and revocations (`remove` and `revoke`). However, we encourage users not to populate these keys. Instead, please either delete or quarantine the package within your Cloudsmith repository. If an attempt is made to submit patch instructions to Cloudsmith with either of these keys populated you will receive a validation error.
-- We encourage contributions and ideas for this repository, please open an issue or PR if you'd like to make a change! :) 
+- The `patch_instructions.json` does support removals and revocations (`remove` and `revoke`). However, we recommend that users do not populate these keys. Instead, please either delete or quarantine the package within your Cloudsmith repository. If an attempt is made to submit patch instructions to Cloudsmith with either of these keys populated you will receive a validation error.
+- We welcome contributions and ideas for this repository, please open an issue or PR if you'd like to make a change! :) 
