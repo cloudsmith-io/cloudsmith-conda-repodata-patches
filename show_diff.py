@@ -46,14 +46,14 @@ def do_subdir(subdir, raw_repodata_filepath, ref_repodata_filepath):
 
 def download_subdir(subdir, raw_repodata_filepath, ref_repodata_filepath):
     raw_url = f"{CLOUDSMITH_CONDA_CHANNEL_API}/{subdir}/repodata_from_packages.json.bz2"
-    print("Downloading:", raw_url)
+    print("Downloading repodata_from_packages.json for:", subdir)
     raw_repodata_response = requests.get(raw_url, timeout=60)
     raw_repodata_response.raise_for_status()
     with open(raw_repodata_filepath, "wb") as file:
             file.write(raw_repodata_response.content)
 
     ref_url = f"{CLOUDSMITH_CONDA_CHANNEL_API}/{subdir}/repodata.json.bz2"
-    print("Downloading:", ref_url)
+    print("Downloading repodata.json for:", subdir)
     ref_repodata_response = requests.get(ref_url, timeout=60)
     ref_repodata_response.raise_for_status()
     with open(ref_repodata_filepath, "wb") as file:
