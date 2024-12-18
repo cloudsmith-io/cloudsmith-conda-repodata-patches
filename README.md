@@ -27,7 +27,7 @@
     }
     ```
 - Once you are content with the instructions, run `python submit_patch.py`. This sends a PUT request for each of the newly generated patch instructions per `subdir` to your repository.
-- The next time the `repodata.json` is retrieved from the Cloudsmith, the index should have the patches applied.
+- The next time the `repodata.json` is retrieved from Cloudsmith, the index should have the patches applied.
 
 ## Notes
 - We encourage you to fork this repository and push all your patches to your forked repository. 
