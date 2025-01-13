@@ -37,4 +37,12 @@
    3. Create another CI/CD job which runs on merges to `main`. This should run the `gen_patch_json.py` script. 
    4. This job could also run the `submit_patch.py` script to update the patch instructions for the specified Cloudsmith repository and `subdir`. 
 - The `patch_instructions.json` does support removals and revocations (`remove` and `revoke`). However, we recommend that users do not populate these keys. Instead, please either delete or quarantine the package within your Cloudsmith repository. If an attempt is made to submit patch instructions to Cloudsmith with either of these keys populated you will receive a validation error.
+- Submitted patch instructions can be viewed by making an [authenticated](https://help.cloudsmith.io/reference/authentication) request to:
+    ```
+    https://conda.cloudsmith.io/{owner}/{repository}/{subdir}/patch_instructions.json
+    ``` 
+    replacing the placeholders with the relevant values:
+    - `{owner}` with your Cloudsmith account name or organization name (namespace).
+    - `{repository}` with your Cloudsmith repository name (slug).
+    - `{subdir}` with the respective subdirectory (Conda architecture): `osx-arm64`, `noarch` etc.
 - We welcome contributions and ideas for this repository, please open an issue or PR if you'd like to make a change! :) 
