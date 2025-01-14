@@ -42,7 +42,7 @@
     https://conda.cloudsmith.io/{workspace}/{repository}/{subdir}/patch_instructions.json
     ``` 
     replacing the placeholders above with the following values:
-    - `{workspace}` with your Cloudsmith Workspace name.
+    - `{workspace}` with your Cloudsmith Workspace (Organization) name.
     - `{repository}` with the relevant Cloudsmith repository name.
     - `{subdir}` with the relevant subdirectory (Conda architecture): `osx-arm64`, `noarch` etc.
 - We welcome contributions and ideas for this repository, please open an issue or PR if you'd like to make a change! :) 
